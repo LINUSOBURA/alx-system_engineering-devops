@@ -4,7 +4,7 @@
 #In a list format
 #Where only the part of the name after the first dash is displayed
 
-MY_LIST=$(find . -type f | cut -d'-' -f2-)
+MY_LIST=$(find . -type f -name '*-*' | cut -d'-' -f2-)
 
 for item in ${MY_LIST};
 do
