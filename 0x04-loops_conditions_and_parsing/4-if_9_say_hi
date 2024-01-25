@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+#Script that uses while and if to say hi if 9
+
+counter=1
+
+while [ $counter -le 9 ]
+do
+	if [ $counter = 9 ]; then
+		echo "Hi"
+	fi
+
+	echo "Best School"
+
+	((counter++))
+done
