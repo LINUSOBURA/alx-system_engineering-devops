@@ -6,10 +6,11 @@ counter=1
 while [ $counter -le 10 ]
 do
 	if [ $counter = 9 ]; then
+		echo "Best School"
 		echo "Hi"
+	else
+		echo "Best School"
 	fi
-
-	echo "Best School"
 
 	((counter++))
 done
