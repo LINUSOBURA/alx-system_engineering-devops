@@ -12,8 +12,7 @@ if [ "$actual_file_size" -lt "$min_file_size" ]; then
 fi
 
 # Check if the log file has valid entries (at least one valid entry)
-if ! awk '{ if (NF >= 9) exit 0; else exit 1 }' "apache-access.log"; then
-
+if ! awk "apache-access.log"; then
     exit 1
 fi
 
