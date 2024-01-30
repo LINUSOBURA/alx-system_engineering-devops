@@ -13,7 +13,6 @@ def match_school(argument)
 
 end
 if ARGV.empty?
-	puts "provide argument"
 
 else
 	argument = ARGV[0]
