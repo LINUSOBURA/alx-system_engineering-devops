@@ -1,14 +1,26 @@
 #!/usr/bin/env bash
 # Creates a 404 page
 
-
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 nginx_config="/etc/nginx/sites-available/default"
 
-new_string="location /xyz {\\
-\\treturn 404 \"Ceci n\'est pas une page\";\\
+new_string="location /redirect_me {\\
+\\treturn 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;\\
 }"
 
 
 sed -i "/server_name _;/a $new_string" "$nginx_config"
+
+nginx_config1="/etc/nginx/sites-available/default"
+
+new_string1="location /xyz {\\
+\\treturn 404 \"Ceci n\'est pas une page\";\\
+}"
+
+
+sed -i "/server_name _;/a $new_string1" "$nginx_config1"
 
 sudo service nginx restart

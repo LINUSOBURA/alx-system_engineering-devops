@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
+#Installs ngix web server
 # Creates 301 redirection
 
+sudo apt-get -y update
+sudo apt-get -y install nginx
+sudo ufw allow 'Nginx HTTP'
+sudo echo "Hello World!" > /var/www/html/index.nginx-debian.html
 nginx_config="/etc/nginx/sites-available/default"
 
 new_string="location /redirect_me {\\
@@ -10,4 +15,4 @@ new_string="location /redirect_me {\\
 
 sed -i "/server_name _;/a $new_string" "$nginx_config"
 
-sudo service nginx restart
+service nginx restart
