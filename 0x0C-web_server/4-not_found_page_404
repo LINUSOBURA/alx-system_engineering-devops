@@ -2,7 +2,7 @@
 # Creates a 404 page
 
 apt-get -y update
-apt-get  install -y nginx
+apt-get  -y install nginx
 ufw allow 'Nginx HTTP'
 
 echo "Hello World!" > /var/www/html/index.html
