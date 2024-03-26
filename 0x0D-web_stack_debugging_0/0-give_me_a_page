@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 # Return a page from docker
 
-docker exec -ti 61b80920e901 /bin/bash
 service apache2 restart
