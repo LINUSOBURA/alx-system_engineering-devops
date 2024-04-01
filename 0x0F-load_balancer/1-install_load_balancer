@@ -5,11 +5,11 @@ apt-get update
 apt-get install -y haproxy
 
 echo "
-frontent web_front
+frontend linus-obura.tech
 	bind *:80
-	default_backend http_back
+	default_backend web_servers
 
-backend web_back
+backend web_servers
 	balance roundrobin
 	server 518233-web-01 3.85.177.85:80 check
 	server 518233-web-02 18.206.192.69:80 check
