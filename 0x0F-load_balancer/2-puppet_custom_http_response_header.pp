@@ -1,39 +1,27 @@
-# Install Nginx package
-package { 'nginx':
-  ensure => installed,
-}
+class { 'nginx': }
 
-# Define Nginx configuration file
-file { '/etc/nginx/sites-available/default':
-  ensure  => file,
+# Update package list (assuming you have a separate resource for this)
+# exec { 'update_apt': ... }
+
+# Install nginx package
+package { 'nginx': ensure => installed }
+
+# Define Nginx configuration using template
+template { '/etc/nginx/sites-available/default.conf':
+  ensure  => present,
   owner   => 'root',
   group   => 'root',
-  content => "
-server {
-	listen 80;
-	listen [::]:80 default_server;
-	root /var/www/html;
-	index index.html;
-  add_header X-Served-By \$hostname;
-	location /redirect_me {
-		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
-	}
-	error_page 404 /404.html;
-	location /404.html {
-		root /var/www/html;
-		internal;
-	}
-}",
+  mode    => '0644',
+  source  => '/path/to/nginx.conf.erb',  # Replace with your template path
   require => Package['nginx'],
   notify  => Service['nginx'],
 }
 
 # Enable the default site
 file { '/etc/nginx/sites-enabled/default':
-  ensure  => link,
-  target  => '/etc/nginx/sites-available/default',
-  require => File['/etc/nginx/sites-available/default'],
-  notify  => Service['nginx'],
+  ensure => link,
+  target => '/etc/nginx/sites-available/default.conf',  # Updated target
+  notify => Service['nginx'],
 }
 
 # Ensure Nginx returns "Hello World!" for root path /
