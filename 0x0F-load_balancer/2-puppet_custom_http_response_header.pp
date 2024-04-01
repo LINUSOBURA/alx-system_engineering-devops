@@ -1,19 +1,19 @@
 # Custom HTTP header in a nginx server
 
-# update ubuntu server
+# updating ubuntu server
 exec { 'update server':
   command  => 'apt-get update',
   user     => 'root',
   provider => 'shell',
 }
 ->
-# install nginx web server on server
+# installing nginx web server on server
 package { 'nginx':
   ensure   => present,
   provider => 'apt'
 }
 ->
-# custom Nginx response header (X-Served-By: hostname)
+# Adding custom Nginx response header
 file_line { 'add HTTP header':
   ensure => 'present',
   path   => '/etc/nginx/sites-available/default',
@@ -21,7 +21,7 @@ file_line { 'add HTTP header':
   line   => 'add_header X-Served-By $hostname;'
 }
 ->
-# start service
+# restart service
 service { 'nginx':
   ensure  => 'running',
   enable  => true,
