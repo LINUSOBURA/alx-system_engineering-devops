@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#configure custom header
+
+# Define the custom header
+custom_header="add_header X-Served-By \$hostname;"
+
+# Configure Nginx to add the custom header
+sudo sed -i "/^server {/a \ \ \ \ $custom_header" /etc/nginx/sites-available/default
+
+# Restart Nginx to apply the changes
+sudo systemctl restart nginx
