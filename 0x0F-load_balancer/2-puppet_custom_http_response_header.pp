@@ -14,7 +14,7 @@ server {
 	listen [::]:80 default_server;
 	root /var/www/html;
 	index index.html;
-  add_header X-Served-By $hostname;
+  add_header X-Served-By \$hostname;
 	location /redirect_me {
 		return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
 	}
