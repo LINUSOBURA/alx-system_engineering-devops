@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Bash script to fix nginx server short version
+sed -i 's/listen [0-9]\+ default_server;/listen 80 default_server;/'  /etc/nginx/sites-enabled/default
+service nginx restart
