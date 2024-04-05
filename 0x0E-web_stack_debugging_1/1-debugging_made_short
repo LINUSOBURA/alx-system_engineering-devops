@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Bash script to fix nginx server short version
 ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-service nginx start
-kill "$(pgrep 'nginx' | head -1)"
+service nginx restart
+pkill "$(pgrep 'nginx' | head -1)"
