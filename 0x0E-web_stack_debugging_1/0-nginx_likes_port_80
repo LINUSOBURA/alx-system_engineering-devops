@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # Bash script to fix nginx server
 
-current_port="s/listen [0-9]\+ default_server"
-default_port="listen 80 default_server"
-sed -i "$current_port/$default_port/g"  /etc/nginx/sites-enabled/default
+#current_port="s/listen [0-9]\+ default_server"
+#default_port="listen 80 default_server"
+sed -i 's/8080/80/g'  /etc/nginx/sites-enabled/default
 
 service nginx restart
