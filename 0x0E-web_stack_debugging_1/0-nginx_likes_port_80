@@ -3,6 +3,8 @@
 
 #current_port="s/listen [0-9]\+ default_server"
 #default_port="listen 80 default_server"
-sed -i 's/8080/80/g'  /etc/nginx/sites-enabled/default
+#sed -i 's/8080/80/g'  /etc/nginx/sites-enabled/default
+rm /etc/nginx/sites-enabled/default
+ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
 
 service nginx restart
