@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 # Bash script that configures user nginx to run nginx as nginx
-sed -i 's/Listen 8080/#Listen 8080/g' /etc/apache2/ports.conf
 sudo sed -i 's/#user www-data/user nginx/' /etc/nginx/nginx.conf
 sudo sed -i 's/80/8080/g' /etc/nginx/sites-available/default
 sudo -u nginx service nginx restart
