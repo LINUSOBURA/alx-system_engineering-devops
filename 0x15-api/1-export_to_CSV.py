@@ -42,14 +42,14 @@ if __name__ == "__main__":
     for task in tasks_done:
         print(f"\t {task}")
 
-csv_file_path = argv[1] + ".csv"
+    csv_file_path = argv[1] + ".csv"
 
-with open(csv_file_path, mode='w', newline='') as csv_file:
-    writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
+    with open(csv_file_path, mode='w', newline='') as csv_file:
+        writer = csv.writer(csv_file, quoting=csv.QUOTE_ALL)
 
-    for task in user_tasks:
-        task_completed_status = task.get('completed')
-        title = task.get('title')
-        writer.writerow([argv[1], username, task_completed_status, title])
+        for task in user_tasks:
+            task_completed_status = task.get('completed')
+            title = task.get('title')
+            writer.writerow([argv[1], username, task_completed_status, title])
 
-    csv_file.close()
+        csv_file.close()
