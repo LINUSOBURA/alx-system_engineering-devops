@@ -41,11 +41,6 @@ if __name__ == "__main__":
                     if task.get('completed') is True:
                         tasks_done.append(task['title'])
 
-                print("""Employee {} is done with tasks({}/{}):""".format(
-                    employee, completed_tasks, total_tasks))
-                for task in tasks_done:
-                    print(f"\t {task}")
-
                 task_owned_list = []
                 for task in user_tasks:
                     task_completed_status = task.get('completed')
