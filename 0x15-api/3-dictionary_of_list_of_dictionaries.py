@@ -17,7 +17,7 @@ if __name__ == "__main__":
         for user in user_list:
             employee = user['name']
             username = user['username']
-            user_id = user['id']
+            user_id = str(user['id'])
 
             with urlopen(
                     f'https://jsonplaceholder.typicode.com/todos') as response:
@@ -42,9 +42,7 @@ if __name__ == "__main__":
 
                 all_tasks[user_id] = task_owned_list
 
-                result_dict = {user_id: all_tasks}
-
-    json_object = json.dumps(result_dict, indent=4)
+    json_object = json.dumps(all_tasks)
 
     json_file_path = 'todo_all_employees.json'
     with open(json_file_path, 'w') as json_file:
