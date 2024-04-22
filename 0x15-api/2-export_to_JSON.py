@@ -34,8 +34,6 @@ if __name__ == "__main__":
 
         tasks_done = []
         for task in user_tasks:
-            task_completed_status = task.get('completed')
-            title = task.get('title')
             if task.get('completed') is True:
                 tasks_done.append(task['title'])
 
@@ -46,14 +44,15 @@ if __name__ == "__main__":
 
     json_file_path = argv[1] + ".json"
 
-    tasks_owned_dict = {
-        "task": title,
-        "completed": task_completed_status,
-        "username": username
-    }
-
     task_owned_list = []
     for task in user_tasks:
+        task_completed_status = task.get('completed')
+        title = task.get('title')
+        tasks_owned_dict = {
+            "task": title,
+            "completed": task_completed_status,
+            "username": username
+        }
         task_owned_list.append(tasks_owned_dict)
 
     result_dict = {argv[1]: task_owned_list}
