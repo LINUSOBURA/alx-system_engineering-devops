@@ -17,10 +17,14 @@ def top_ten(subreddit):
         None: If the response does not contain any data.
         None: If the response does not contain any children.
         None: If the response does not contain any titles.
-        None: If the response does not contain any data for any of the children.
-        None: If the response does not contain any titles for any of the children.
-        None: If the response does not contain any titles for the first 10 children.
-        None: If the response does not contain any titles for the first 10 children.
+        None: If the response does not contain any data
+        for any of the children.
+        None: If the response does not contain any titles
+        for any of the children.
+        None: If the response does not contain any titles
+        for the first 10 children.
+        None: If the response does not contain any titles
+        for the first 10 children.
     """
 
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'

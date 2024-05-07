@@ -13,7 +13,8 @@ def number_of_subscribers(subreddit):
         subreddit (str): The name of the subreddit.
 
     Returns:
-        int: The number of subscribers for the subreddit. Returns 0 if the request fails.
+        int: The number of subscribers for the subreddit.
+        Returns 0 if the request fails.
     """
     url = f'https://www.reddit.com//r/{subreddit}/about.json'
     response = requests.get(url)
