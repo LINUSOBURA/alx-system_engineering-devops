@@ -28,7 +28,8 @@ def top_ten(subreddit):
     """
 
     url = f'https://www.reddit.com/r/{subreddit}/hot.json'
-    response = requests.get(url)
+    params = {'limit': 10}
+    response = requests.get(url, params=params)
 
     if response.status_code != 200:
         return None
