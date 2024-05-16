@@ -1,0 +1,35 @@
+server {
+        add_header X-Served-By $hostname;
+        listen 80;
+        listen [::]:80 default_server;
+        root /var/www/html;
+        index index.html;
+
+        server_name 3.85.177.85;
+
+        location /redirect_me {
+                return 301 https://www.youtube.com/watch?v=QH2-TGUlwu4;
+        }
+
+        error_page 404 /404.html;
+        location /404.html {
+                root /var/www/html;
+                internal;
+        }
+
+        location /hbnb_static {
+        alias /data/web_static/current;
+        }
+
+        location /airbnb-onepage/ {
+                proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+        }
+
+        location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+                proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+        }
+
+        location /api/ {
+                proxy_pass http://127.0.0.1:5002;
+        }
+}
